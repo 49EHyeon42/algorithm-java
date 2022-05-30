@@ -12,7 +12,7 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
-        int answer = 0;
+        int answer;
         if (N == 1) {
             answer = Integer.parseInt(br.readLine());
         } else if (N == 2) {
@@ -29,8 +29,8 @@ public class Main {
             dpArray[2] = array[1] + array[2];
             for (int i = 3; i <= N; i++) {
                 dpArray[i] = Integer.max(
-                    Integer.max(dpArray[i - 3] + array[i - 1] + array[i],
-                        dpArray[i - 2] + array[i]), dpArray[i - 1]);
+                    Integer.max(dpArray[i - 3] + array[i - 1], dpArray[i - 2]) + array[i],
+                    dpArray[i - 1]);
             }
 
             answer = dpArray[N];
