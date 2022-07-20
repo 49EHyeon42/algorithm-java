@@ -1,4 +1,4 @@
-public class ButtomUp {
+public class BottomUp {
 
     private int MAX_SIZE = 10;
 
