@@ -1,7 +1,5 @@
-package test;
-
 // reference : https://ip99202.github.io/posts/%EC%9C%A0%EB%8B%88%EC%98%A8-%ED%8C%8C%EC%9D%B8%EB%93%9C(Union-Find)/#:~:text=%EC%9C%A0%EB%8B%88%EC%98%A8%20%ED%8C%8C%EC%9D%B8%EB%93%9C%EB%8A%94%20%EA%B7%B8%EB%9E%98%ED%94%84%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98,%EC%B0%BE%EB%8A%94%20Find%EC%97%B0%EC%82%B0%EC%9C%BC%EB%A1%9C%20%EC%9D%B4%EB%A3%A8%EC%96%B4%EC%A7%84%EB%8B%A4.
-public class TestMain {
+public class Main {
 
     private static final int[] parent = new int[9];
 
