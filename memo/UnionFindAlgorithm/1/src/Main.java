@@ -4,7 +4,7 @@ public class Main {
     private static final int[] parent = new int[9];
 
     public static void main(String[] args) {
-        for (int i : parent) {
+        for (int i = 0; i < parent.length; i++) {
             parent[i] = i;
         }
 
