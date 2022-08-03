@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.StringTokenizer;
 
-// Kruskal's algorithm 1 : 메모리 초과
+// Kruskal's algorithm 1
 public class Main {
 
     private static final ArrayList<Edge> graph = new ArrayList<>();
@@ -27,37 +27,31 @@ public class Main {
             int y = Integer.parseInt(st.nextToken());
             int z = Integer.parseInt(st.nextToken());
 
-            stars.add(new Star(x, y, z));
+            stars.add(new Star(i, x, y, z));
         }
 
         stars.sort(Comparator.comparingInt(Star::getX));
         for (int i = 0; i < starCount - 1; i++) {
-            for (int j = i + 1; j < starCount; j++) {
-                int distance = Math.abs(stars.get(i).getX() - stars.get(j).getX());
-                graph.add(new Edge(i, j, distance));
-            }
+            int distance = Math.abs(stars.get(i).getX() - stars.get(i + 1).getX());
+            graph.add(new Edge(stars.get(i).getNumber(), stars.get(i + 1).getNumber(), distance));
         }
 
         stars.sort(Comparator.comparingInt(Star::getY));
         for (int i = 0; i < starCount - 1; i++) {
-            for (int j = i + 1; j < starCount; j++) {
-                int distance = Math.abs(stars.get(i).getY() - stars.get(j).getY());
-                graph.add(new Edge(i, j, distance));
-            }
+            int distance = Math.abs(stars.get(i).getY() - stars.get(i + 1).getY());
+            graph.add(new Edge(stars.get(i).getNumber(), stars.get(i + 1).getNumber(), distance));
         }
 
         stars.sort(Comparator.comparingInt(Star::getZ));
         for (int i = 0; i < starCount - 1; i++) {
-            for (int j = i + 1; j < starCount; j++) {
-                int distance = Math.abs(stars.get(i).getZ() - stars.get(j).getZ());
-                graph.add(new Edge(i, j, distance));
-            }
+            int distance = Math.abs(stars.get(i).getZ() - stars.get(i + 1).getZ());
+            graph.add(new Edge(stars.get(i).getNumber(), stars.get(i + 1).getNumber(), distance));
         }
 
         graph.sort(Comparator.comparingInt(Edge::getWeight));
 
-        parent = new int[starCount + 1];
-        for (int i = 0; i <= starCount; i++) {
+        parent = new int[starCount];
+        for (int i = 0; i < starCount; i++) {
             parent[i] = i;
         }
 
@@ -95,14 +89,20 @@ public class Main {
 
 class Star {
 
+    private final int number;
     private final int x;
     private final int y;
     private final int z;
 
-    public Star(int x, int y, int z) {
+    public Star(int number, int x, int y, int z) {
+        this.number = number;
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    public int getNumber() {
+        return number;
     }
 
     public int getX() {
