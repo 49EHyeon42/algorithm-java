@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-// reference : https://measurezero.tistory.com/936
+// reference : https://measurezero.tistory.com/936 && 백준
 public class Main {
 
     private static final int VERTEX_NUMBER = 8;
@@ -54,15 +54,19 @@ public class Main {
         }
     }
 
+    // refactoring
     private static boolean isPossible() {
-        return isSharp(list.get(0), list.get(1), list.get(2)) &&
-            isSharp(list.get(1), list.get(2), list.get(3)) &&
-            isSharp(list.get(2), list.get(3), list.get(4)) &&
-            isSharp(list.get(3), list.get(4), list.get(5)) &&
-            isSharp(list.get(4), list.get(5), list.get(6)) &&
-            isSharp(list.get(5), list.get(6), list.get(7)) &&
-            isSharp(list.get(6), list.get(7), list.get(0)) &&
-            isSharp(list.get(7), list.get(0), list.get(1));
+        for (int i = 0; i < 8; i++) {
+            int p1 = list.get(i);
+            int p2 = list.get((i + 1) % 8);
+            int p3 = list.get((i + 2) % 8);
+
+            if (!isSharp(p1, p2, p3)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private static boolean isSharp(int p1, int p2, int p3) {
