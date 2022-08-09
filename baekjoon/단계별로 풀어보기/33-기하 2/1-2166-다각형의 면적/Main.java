@@ -8,13 +8,14 @@ import java.util.StringTokenizer;
 
 public class Main {
 
+    private static int N;
+    private static final ArrayList<Coordinate> coordinates = new ArrayList<>();
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int N = Integer.parseInt(br.readLine());
-
-        ArrayList<Coordinate> coordinates = new ArrayList<>();
+        N = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < N; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -24,7 +25,15 @@ public class Main {
             coordinates.add(new Coordinate(x, y));
         }
 
+        bw.write(String.format("%.1f", getArea()));
+
+        bw.flush();
+        bw.close();
+    }
+
+    private static double getArea() {
         double answer = 0;
+
         for (int i = 1; i < N - 1; i++) {
             double x1 = coordinates.get(0).getX();
             double x2 = coordinates.get(i).getX();
@@ -36,10 +45,7 @@ public class Main {
             answer += ((x1 * y2 + x2 * y3 + x3 * y1) - (x2 * y1 + x3 * y2 + x1 * y3)) / 2;
         }
 
-        bw.write(String.format("%.1f", Math.abs(answer)));
-
-        bw.flush();
-        bw.close();
+        return Math.abs(answer);
     }
 }
 
