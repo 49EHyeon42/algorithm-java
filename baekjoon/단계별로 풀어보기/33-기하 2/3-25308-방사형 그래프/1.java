@@ -3,8 +3,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 
 // reference : https://measurezero.tistory.com/936 && 백준
@@ -15,7 +13,7 @@ public class Main {
     private static int answer;
     private static int[] array;
     private static boolean[] isVisited;
-    private static final List<Integer> list = new ArrayList<>();
+    private static int[] list;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -23,11 +21,14 @@ public class Main {
 
         array = new int[VERTEX_NUMBER];
         isVisited = new boolean[VERTEX_NUMBER];
+        list = new int[VERTEX_NUMBER];
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < VERTEX_NUMBER; i++) {
             array[i] = Integer.parseInt(st.nextToken());
         }
+
+        list[0] = array[0];
 
         recursive(0);
 
@@ -37,6 +38,7 @@ public class Main {
         bw.close();
     }
 
+    // refactoring
     private static void recursive(int count) {
         if (count == 8 && isPossible()) {
             answer++;
@@ -46,9 +48,8 @@ public class Main {
         for (int i = 0; i < VERTEX_NUMBER; i++) {
             if (!isVisited[i]) {
                 isVisited[i] = true;
-                list.add(array[i]);
+                list[count] = array[i];
                 recursive(count + 1);
-                list.remove(list.size() - 1);
                 isVisited[i] = false;
             }
         }
@@ -57,9 +58,9 @@ public class Main {
     // refactoring
     private static boolean isPossible() {
         for (int i = 0; i < 8; i++) {
-            int p1 = list.get(i);
-            int p2 = list.get((i + 1) % 8);
-            int p3 = list.get((i + 2) % 8);
+            int p1 = list[i];
+            int p2 = list[(i + 1) % 8];
+            int p3 = list[(i + 2) % 8];
 
             if (!isSharp(p1, p2, p3)) {
                 return false;
