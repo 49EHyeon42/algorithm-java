@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class Solution {
+class Solution {
 
     public int[] solution(int[] arr) {
         Stack<Integer> stack = new Stack<>();

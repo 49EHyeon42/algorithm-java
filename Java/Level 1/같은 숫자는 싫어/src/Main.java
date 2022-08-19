@@ -1,23 +1,18 @@
-import java.util.Stack;
+import java.util.Arrays;
 
-public class Solution {
+public class Main {
 
-    public int[] solution(int[] arr) {
-        Stack<Integer> stack = new Stack<>();
+    public static void main(String[] args) {
+        Solution solution = new Solution();
 
-        for (int i : arr) {
-            if (stack.isEmpty()) {
-                stack.push(i);
-            } else if (stack.peek() != i) {
-                stack.push(i);
-            }
-        }
+        // Test 1
+        int[] arr1 = {1, 1, 3, 3, 0, 1, 1};
+        int[] answer1 = {1, 3, 0, 1};
+        System.out.println("Test Case 1 = " + Arrays.equals(solution.solution(arr1), answer1));
 
-        int[] answer = new int[stack.size()];
-        for (int i = stack.size() - 1; i >= 0; i--) {
-            answer[i] = stack.pop();
-        }
-
-        return answer;
+        // Test 2
+        int[] arr2 = {4, 4, 4, 3, 3};
+        int[] answer2 = {4, 3};
+        System.out.println("Test Case 2 = " + Arrays.equals(solution.solution(arr2), answer2));
     }
 }
