@@ -20,15 +20,14 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(br.readLine());
 
         array = new int[N];
 
         temp = new int[N];
         isVisited = new boolean[N];
 
-        st = new StringTokenizer(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
             array[i] = Integer.parseInt(st.nextToken());
         }
