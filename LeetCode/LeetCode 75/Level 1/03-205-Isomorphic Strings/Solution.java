@@ -4,20 +4,20 @@ class Solution {
         return toSameStructure(s).equals(toSameStructure(t));
     }
 
-    private List<Integer> toSameStructure(String string) {
-        List<Integer> list = new ArrayList<>();
+    private String toSameStructure(String string) {
+        StringBuilder sb = new StringBuilder();
         Map<Character, Integer> map = new HashMap<>();
 
-        for (int i = 0, index = 0; i < string.length(); i++) {
+        for (int i = 0; i < string.length(); i++) {
             char character = string.charAt(i);
 
             if (!map.containsKey(character)) {
-                map.put(character, index++);
+                map.put(character, i);
             }
-
-            list.add(map.get(character));
+            
+            sb.append(map.get(character)).append(' ');
         }
 
-        return list;
+        return sb.toString().trim();
     }
 }
