@@ -13,4 +13,18 @@ class Solution {
 
         return previousNode;
     }
+
+    // Recursive Approach
+    public ListNode reverseList2(ListNode head) {
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+    
+        ListNode res = reverseList2(head.next);
+        head.next.next = head;
+        head.next = null;
+
+        return res;
+    }
 }
