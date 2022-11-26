@@ -71,17 +71,14 @@ class SolutionTest {
     }
 
     boolean isSame(ListNode result, ListNode output) {
-        boolean flag = true;
-
         while (result != null || output != null) {
             if (result.val != output.val) {
-                flag = false;
-                break;
+                return false;
             }
 
             result = result.next;
             output = output.next;
         }
-        return flag;
+        return true;
     }
 }
