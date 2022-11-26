@@ -68,7 +68,7 @@ class SolutionTest {
     }
 
     boolean isSame(ListNode result, ListNode output) {
-        while (result != null || output != null) {
+        while (result != null && output != null) {
             if (result.val != output.val) {
                 return false;
             }
