@@ -4,18 +4,16 @@ class Solution {
         int start = 0;
         int end = nums.length - 1;
 
-        while (start <= end) {
-            int mid = (start + end) / 2;
+        while (start < end) {
+            int mid = start + (end - start + 1) / 2; // 오버플로우 방지
 
-            if (nums[mid] == target) {
-                return mid;
-            } else if (nums[mid] < target) {
-                start = mid + 1;
-            } else { // nums[mid] > target
+            if (target < nums[mid]) {
                 end = mid - 1;
+            } else {
+                start = mid;
             }
         }
 
-        return -1;
+        return (nums[start] == target) ? start : -1;
     }
 }
