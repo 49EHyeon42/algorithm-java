@@ -1,5 +1,6 @@
 class Solution {
 
+    // Time complexity = O(N), Space complexity = O(N)
     public int climbStairs(int n) {
         if (n == 1 || n == 2) {
             return n;
@@ -15,5 +16,23 @@ class Solution {
         }
 
         return dp[n];
+    }
+
+    // Time complexity = O(N), Space complexity = O(1)
+    public int climbStairs2(int n) {
+        if (n == 1 || n == 2) {
+            return n;
+        }
+
+        int temp1 = 1;
+        int temp2 = 2;
+
+        while (n-- > 2) {
+            int sum = temp1 + temp2;
+            temp1 = temp2;
+            temp2 = sum;
+        }
+
+        return temp2;
     }
 }
