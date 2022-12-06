@@ -2,7 +2,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.PriorityQueue;
 
 class Solution {
@@ -14,14 +13,14 @@ class Solution {
             map.put(word, map.getOrDefault(word, 0) + 1);
         }
 
-        PriorityQueue<Entry<String, Integer>> pq = new PriorityQueue<>((o1, o2) -> {
+        PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>((o1, o2) -> {
             if (o1.getValue().equals(o2.getValue())) {
                 return o2.getKey().compareTo(o1.getKey());
             }
             return o1.getValue().compareTo(o2.getValue());
         });
 
-        for (Entry<String, Integer> entry : map.entrySet()) {
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
             pq.offer(entry);
 
             if (pq.size() > k) {
