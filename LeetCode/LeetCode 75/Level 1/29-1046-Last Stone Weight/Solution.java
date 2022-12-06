@@ -7,18 +7,13 @@ class Solution {
         PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
 
         for (int stone : stones) {
-            pq.add(stone);
+            pq.offer(stone);
         }
 
         while (pq.size() > 1) {
-            int firstStone = pq.poll();
-            int secondStone = pq.poll();
-
-            if (firstStone - secondStone != 0) {
-                pq.add(firstStone - secondStone);
-            }
+            pq.offer(pq.poll() - pq.poll());
         }
 
-        return (pq.size() == 1) ? pq.poll() : 0;
+        return pq.poll();
     }
 }
