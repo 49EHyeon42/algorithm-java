@@ -1,5 +1,6 @@
 class Solution {
 
+    // iterative approach
     public int numberOfSteps(int num) {
         int step = 0;
 
@@ -9,5 +10,10 @@ class Solution {
         }
 
         return step;
+    }
+
+    // recursive approach
+    public int numberOfSteps2(int num) {
+        return (num == 0) ? 0 : 1 + numberOfSteps((num % 2 == 0) ? num / 2 : num - 1);
     }
 }
