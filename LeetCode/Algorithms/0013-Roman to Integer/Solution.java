@@ -13,4 +13,19 @@ public class Solution {
 
         return sum + map.get(s.charAt(s.length() - 1));
     }
+
+    // replace string
+    public int romanToInt2(String s) {
+        Map<Character, Integer> map = Map.of('I', 1, 'V', 5, 'X', 10, 'L', 50, 'C', 100, 'D', 500, 'M', 1000);
+
+        s = s.replace("IV", "IIII").replace("IX", "VIIII").replace("XL", "XXXX").replace("XC", "LXXXX").replace("CD", "CCCC").replace("CM", "DCCCC");
+
+        int sum = 0;
+
+        for (char c : s.toCharArray()) {
+            sum += map.get(c);
+        }
+
+        return sum;
+    }
 }
