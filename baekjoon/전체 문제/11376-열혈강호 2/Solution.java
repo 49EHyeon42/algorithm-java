@@ -14,7 +14,7 @@ public class Main {
 
     private static boolean[] visited;
 
-    private static int[] endMatch;
+    private static int[] match;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -38,9 +38,9 @@ public class Main {
 
         visited = new boolean[N + 1];
 
-        endMatch = new int[M + 1];
+        match = new int[M + 1];
         for (int i = 0; i <= M; i++) {
-            endMatch[i] = -1;
+            match[i] = -1;
         }
 
         bw.write(Integer.toString(bipartiteMatching()));
@@ -67,17 +67,17 @@ public class Main {
         return maximumMatchingSize;
     }
 
-    private static boolean dfs(int a) {
-        if (visited[a]) {
+    private static boolean dfs(int from) {
+        if (visited[from]) {
             return false;
         }
 
-        visited[a] = true;
+        visited[from] = true;
 
-        for (int b = 1; b <= M; b++) {
-            if (graph[a][b]) {
-                if (endMatch[b] == -1 || dfs(endMatch[b])) {
-                    endMatch[b] = a;
+        for (int to = 1; to <= M; to++) {
+            if (graph[from][to]) {
+                if (match[to] == -1 || dfs(match[to])) {
+                    match[to] = from;
 
                     return true;
                 }
