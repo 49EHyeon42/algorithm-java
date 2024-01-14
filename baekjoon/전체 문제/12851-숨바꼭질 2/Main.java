@@ -38,57 +38,13 @@ public class Main {
 
             int nextWeight = currentVertex.weight + 1;
 
-            // - 1
-            int nextN = currentVertex.value - 1;
+            int[] nextNs = new int[]{currentVertex.value - 1, currentVertex.value + 1, currentVertex.value * 2};
 
-            if (nextN > -1) {
-                if (!visited.containsKey(nextN)) {
-                    visited.put(nextN, new Visit(nextWeight, 1));
-
-                    queue.offer(new Vertex(nextN, nextWeight));
-                } else {
-                    Visit visit = visited.get(nextN);
-
-                    if (visit.minimumVisit == nextWeight) {
-                        visit.count++;
-
-                        // ex 1 + 1 -> 2, 1 * 2 -> 2 :: 2가지 케이스
-                        queue.offer(new Vertex(nextN, nextWeight));
-                    } else if (visit.minimumVisit > nextWeight) {
-                        visit.minimumVisit = nextWeight;
-
-                        visit.count = 1;
-                    }
+            for (int nextN : nextNs) {
+                if (nextN < 0 || nextN > 100000) {
+                    continue;
                 }
-            }
 
-            // + 1
-            nextN = currentVertex.value + 1;
-
-            if (nextN <= 100000) {
-                if (!visited.containsKey(nextN)) {
-                    visited.put(nextN, new Visit(nextWeight, 1));
-
-                    queue.offer(new Vertex(nextN, nextWeight));
-                } else {
-                    Visit visit = visited.get(nextN);
-
-                    if (visit.minimumVisit == nextWeight) {
-                        visit.count++;
-
-                        queue.offer(new Vertex(nextN, nextWeight));
-                    } else if (visit.minimumVisit > nextWeight) {
-                        visit.minimumVisit = nextWeight;
-
-                        visit.count = 1;
-                    }
-                }
-            }
-
-            // * 2
-            nextN = currentVertex.value * 2;
-
-            if (nextN <= 100000) {
                 if (!visited.containsKey(nextN)) {
                     visited.put(nextN, new Visit(nextWeight, 1));
 
