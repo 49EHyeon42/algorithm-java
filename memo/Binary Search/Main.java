@@ -4,6 +4,7 @@ public class Main {
         int[] array = new int[]{10, 11, 12, 13, 14, 15, 16, 17, 18, 20};
 
         System.out.println("반복: " + iterationBinarySearch(array, 11));
+        System.out.println("반복: " + iterationBinarySearch2(array, 11));
         System.out.println("재귀: " + recursionBinarySearch(array, 0, array.length, 13));
     }
 
@@ -19,6 +20,24 @@ public class Main {
                 low = mid + 1;
             } else {
                 high = mid;
+            }
+        }
+
+        return high;
+    }
+
+    // 반복2 (권장)
+    private static int iterationBinarySearch2(int[] array, int target) {
+        int low = 0;
+        int high = array.length;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (array[mid] <= target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
             }
         }
 
