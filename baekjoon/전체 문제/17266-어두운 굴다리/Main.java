@@ -19,8 +19,6 @@ public class Main {
             array[i] = Integer.parseInt(st.nextToken());
         }
 
-        int result = -1;
-
         int left = 1;
         int right = N;
 
@@ -29,13 +27,12 @@ public class Main {
 
             if (canGoHome(N, array, mid)) {
                 right = mid - 1;
-                result = mid;
             } else {
                 left = mid + 1;
             }
         }
 
-        bw.write(Integer.toString(result));
+        bw.write(Integer.toString(left));
         bw.flush();
 
         br.close();
