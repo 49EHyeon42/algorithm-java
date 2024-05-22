@@ -25,8 +25,6 @@ public class Main {
 
         int totalBudget = Integer.parseInt(br.readLine());
 
-        int maxPayBudget = 0;
-
         while (left <= right) {
             int mid = (left + right) / 2;
 
@@ -34,11 +32,10 @@ public class Main {
                 right = mid - 1;
             } else {
                 left = mid + 1;
-                maxPayBudget = mid;
             }
         }
 
-        bw.write(Integer.toString(maxPayBudget));
+        bw.write(Integer.toString(right));
         bw.flush();
 
         br.close();
