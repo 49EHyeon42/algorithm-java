@@ -11,6 +11,8 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
+        int count = 0;
+
         while (N-- > 0) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int y = Integer.parseInt(st.nextToken());
@@ -18,16 +20,12 @@ public class Main {
 
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
+                    if (array[y + i][x + j]) {
+                        continue;
+                    }
+
                     array[y + i][x + j] = true;
-                }
-            }
-        }
 
-        int count = 0;
-
-        for (boolean[] booleans : array) {
-            for (boolean b : booleans) {
-                if (b) {
                     count++;
                 }
             }
