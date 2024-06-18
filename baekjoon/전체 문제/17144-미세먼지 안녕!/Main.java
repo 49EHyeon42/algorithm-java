@@ -96,9 +96,6 @@ public class Main {
             }
         }
 
-        // 공기청정기 복구
-        newArray[airCleaner][0] = newArray[airCleaner + 1][0] = -1;
-
         array = newArray;
     }
 
@@ -148,7 +145,6 @@ public class Main {
             }
         }
 
-        // 공기청정기 2 추가
-        return sum + 2;
+        return sum;
     }
 }
