@@ -7,25 +7,19 @@ class Solution {
     private String convertBase3Reverse(int number) {
         StringBuilder sb = new StringBuilder();
 
-        while (true) {
-            int quotient = number / 3;
-            int remainder = number % 3;
-
-            if (quotient == 0) {
-                return sb.append(remainder).toString();
-            }
-
-            sb.append(remainder);
-
-            number = quotient;
+        while (number > 0) {
+            sb.append(number % 3);
+            number /= 3;
         }
+
+        return sb.toString();
     }
 
-    private int convertBase3ToBase10(String string) {
+    private int convertBase3ToBase10(String base3) {
         int sum = 0;
 
-        for (int i = 0, exponent = string.length() - 1; i < string.length(); i++, exponent--) {
-            sum += (string.charAt(i) - '0') * (int) Math.pow(3, exponent);
+        for (int i = 0; i < base3.length(); i++) {
+            sum = sum * 3 + (base3.charAt(i) - '0');
         }
 
         return sum;
