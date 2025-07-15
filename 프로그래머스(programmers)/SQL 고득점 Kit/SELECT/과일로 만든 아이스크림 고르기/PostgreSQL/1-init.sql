@@ -26,7 +26,6 @@ VALUES (101, 'chocolate', 3200),
        (111, 'orange', 2900),
        (112, 'pineapple', 2900);
 
-
 INSERT INTO "ICECREAM_INFO" ("FLAVOR", "INGREDIENT_TYPE")
 VALUES ('chocolate', 'sugar_based'),
        ('vanilla', 'sugar_based'),
